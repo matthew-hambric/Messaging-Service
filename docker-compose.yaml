@@ -1,0 +1,28 @@
+services:
+  webapi-seed:
+    image: messaging-service
+    hostname: message-service
+    ports:
+      - '9001:80'
+      - '5120:5120'
+    environment:
+      ACTORSYSTEM: "ActorSystem"
+      CLUSTER_PORT: 5120
+      CLUSTER_IP: "message-service"
+      CLUSTER_SEEDS: "akka.tcp://ActorSystem@message-service:5120"
+    restart: on-failure
+  
+  webapi:
+    image: messaging-service
+    ports:
+      - '9002:80'
+    environment:
+      ACTORSYSTEM: "ActorSystem"
+      CLUSTER_PORT: 5120
+      CLUSTER_IP: "127.0.0.1"
+      CLUSTER_SEEDS: "akka.tcp://ActorSystem@message-service:5120"
+    restart: on-failure
+    depends_on:
+      - "webapi-seed"
+    
+  # docker-compose up --scale webapi=3

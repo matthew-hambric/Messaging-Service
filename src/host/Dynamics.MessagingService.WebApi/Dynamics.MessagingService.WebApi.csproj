@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="akka.hosting" Version="0.4.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\Dynamics.MessagingService.Abstractions\Dynamics.MessagingService.Abstractions.csproj" />
+    <ProjectReference Include="..\..\core\Dynamics.MessagingService.Persistence.EntityFramework\Dynamics.MessagingService.Persistence.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\akka\Dynamics.MessagingService.Akka\Dynamics.MessagingService.Akka.csproj" />
+    <ProjectReference Include="..\..\core\Dynamics.MessagingService.Core\Dynamics.MessagingService.Core.csproj" />
+  </ItemGroup>
+
+</Project>
